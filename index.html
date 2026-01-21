@@ -4,132 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RPA Systems | Automação Inteligente</title>
-  <meta name="description" content="Automação de processos, RPA e eficiência operacional com foco em resultado." />
+  <meta name="description" content="Automação de processos (RPA), melhoria de processos e integrações. Menos retrabalho, mais escala." />
 
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f4f4f5;
-      color: #111;
+    :root{
+      --bg:#0b0b0f;
+      --panel:#12121a;
+      --card:#141420;
+      --text:#eaeaf2;
+      --muted:#a7a7bd;
+      --line:rgba(255,255,255,.10);
+      --accent:#7c3aed; /* roxo premium */
+      --accent2:#22c55e; /* verde whatsapp/resultado */
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
     }
-    header {
-      background: #111;
-      color: #fff;
-      padding: 24px;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1, h2 {
-      margin-bottom: 16px;
-    }
-    p {
-      color: #444;
-      line-height: 1.6;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      background: #111;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-    }
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-    .card {
-      background: #fff;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.05);
-    }
-    footer {
-      background: #111;
-      color: #bbb;
-      padding: 24px;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
-</head>
 
-<body>
-
-<header>
-  <h1>RPA Systems</h1>
-  <p>Automação inteligente com foco em resultado</p>
-</header>
-
-<section>
-  <h2>Automação que vira resultado</h2>
-  <p>
-    A RPA Systems ajuda empresas a eliminar tarefas manuais, reduzir erros
-    e ganhar escala com automação de processos e integração entre sistemas.
-  </p>
-  <a class="btn" href="https://wa.me/5511971170414" target="_blank">
-    Falar no WhatsApp
-  </a>
-</section>
-
-<section>
-  <h2>O que fazemos</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>RPA</h3>
-      <p>Automação de tarefas repetitivas com robôs estáveis, monitorados e documentados.</p>
-    </div>
-    <div class="card">
-      <h3>Processos</h3>
-      <p>Mapeamento AS IS / TO BE e priorização por impacto financeiro e operacional.</p>
-    </div>
-    <div class="card">
-      <h3>Integrações</h3>
-      <p>Conexão entre sistemas, automação de relatórios e rotinas críticas.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Como funciona</h2>
-  <div class="grid">
-    <div class="card">1️⃣ Diagnóstico rápido</div>
-    <div class="card">2️⃣ Desenho da solução</div>
-    <div class="card">3️⃣ Automação / MVP</div>
-    <div class="card">4️⃣ Operação e melhoria</div>
-  </div>
-</section>
-
-<section>
-  <h2>Planos</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Start</h3>
-      <p>R$ 1.500 — 1 processo automatizado</p>
-    </div>
-    <div class="card">
-      <h3>Growth</h3>
-      <p>R$ 3.000 — automação contínua (mais escolhido)</p>
-    </div>
-    <div class="card">
-      <h3>Enterprise</h3>
-      <p>Sob consulta</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 RPA Systems — São Paulo • SP
-</footer>
-
-</body>
-</html>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1000px 700px at 20% -10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 700px at 85% 0%, rgba(34,197,94,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(124,58,237,.14), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,15,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .navin{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{
+      width:38px;height:38px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(34,197,94,.9));
+      box-shadow: 0 10px 30px rgba(124,58,237,.25);
+      display:grid;place-items:center;font-weight:800;
+    }
+    .brand b{font-size:14px;letter-spacing:.2
