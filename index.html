@@ -1,855 +1,828 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>RPA Systems AI | Automação + IA com ROI</title>
-  <meta name="description" content="Automação (RPA) + Inteligência Artificial com governança. Simule Payback e ROI em minutos. MVP em 7–21 dias." />
-
-  <meta property="og:title" content="RPA Systems AI | Automação + IA com ROI">
-  <meta property="og:description" content="RPA + IA com governança. Simulador de Payback e ROI. MVP em 7–21 dias.">
-  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RPA Systems | Automação Inteligente</title>
+  <meta name="description" content="RPA, automação e melhoria de processos com foco em ROI. Diagnóstico rápido, MVP em 7–21 dias, governança e suporte." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#070a12;
-      --bg2:#0b1222;
-      --glass: rgba(255,255,255,.06);
-      --glass2: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.94);
-      --muted: rgba(255,255,255,.74);
-      --muted2: rgba(255,255,255,.58);
-      --stroke: rgba(255,255,255,.12);
-      --shadow: 0 18px 60px rgba(0,0,0,.48);
-      --shadow2: 0 10px 28px rgba(0,0,0,.34);
-      --r: 18px;
-      --r2: 26px;
-      --max: 1160px;
-
-      --p1:#7c3aed;  /* roxo */
-      --p2:#22c55e;  /* verde */
-      --p3:#3b82f6;  /* azul */
-      --ok:#86efac;
-      --warn:#fde68a;
-      --bad:#fca5a5;
+      --bg:#0b0f17;
+      --bg2:#0f172a;
+      --card:#0f1a2f;
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.56);
+      --line:rgba(255,255,255,.10);
+      --accent:#7c3aed; /* roxo */
+      --accent2:#22c55e; /* verde */
+      --white:#fff;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --shadow2: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:
-        radial-gradient(1100px 650px at 12% -10%, rgba(124,58,237,.48), transparent 60%),
-        radial-gradient(900px 550px at 100% 10%, rgba(34,197,94,.28), transparent 55%),
-        radial-gradient(900px 700px at 40% 110%, rgba(59,130,246,.22), transparent 60%),
+        radial-gradient(1200px 600px at 10% 0%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,.22), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(59,130,246,.18), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2));
-      color: var(--text);
-      overflow-x:hidden;
+      color:var(--white);
+      line-height:1.55;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 0 18px;}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
     .topbar{
-      border-bottom: 1px solid var(--stroke);
-      background: rgba(0,0,0,.10);
+      border-bottom:1px solid var(--line);
+      background:rgba(0,0,0,.10);
       backdrop-filter: blur(10px);
     }
-    .topbar .in{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding: 10px 0;
-      color: var(--muted2);
-      font-size:12px;
-      flex-wrap:wrap;
+    .topbar .inner{
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      padding:10px 0;font-size:12px;color:var(--muted2);
     }
     .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:6px 10px;border-radius:999px;
       white-space:nowrap;
     }
-
-    /* Header */
     .header{
-      position:sticky; top:0; z-index:40;
-      border-bottom: 1px solid var(--stroke);
-      background: rgba(7,10,18,.62);
+      position:sticky;top:0;z-index:30;
+      border-bottom:1px solid var(--line);
+      background:rgba(11,15,23,.65);
       backdrop-filter: blur(14px);
     }
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 230px;
-    }
-    .brand .name{font-weight:900; letter-spacing:-.02em;}
-    .brand .tag{font-size:12px; color: var(--muted2); margin-top:2px;}
-    .brand .stack{display:flex; flex-direction:column; line-height:1;}
-    .links{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}
-    .links a{font-size:13px; color: var(--muted); font-weight:700; padding:8px 10px; border-radius:999px; border:1px solid transparent;}
-    .links a:hover{color:#fff; border-color: var(--stroke); background: rgba(255,255,255,.04);}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .name{font-weight:800;letter-spacing:-.02em}
+    .brand .tag{font-size:12px;color:var(--muted2);margin-top:2px}
+    .brand .stack{display:flex;flex-direction:column;line-height:1}
+    .links{display:flex;gap:18px;align-items:center}
+    .links a{font-size:13px;color:var(--muted);font-weight:600}
+    .links a:hover{color:#fff}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color: #fff;
-      font-weight:900;
-      font-size:13px;
-      transition: transform .12s ease, filter .12s ease, background .12s ease;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:14px;
+      font-weight:700;font-size:13px;
+      border:1px solid transparent;
+      transition:.2s ease;
       cursor:pointer;
       user-select:none;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(124,58,237,1), rgba(34,197,94,0.9));
       box-shadow: var(--shadow2);
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09);}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,197,94,.86));
-      border-color: rgba(255,255,255,.18);
+    .btn.primary:hover{transform:translateY(-1px);filter:saturate(1.05)}
+    .btn.ghost{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+      color:#fff;
     }
-    .btn.primary:hover{filter: brightness(1.05);}
+    .btn.ghost:hover{background:rgba(255,255,255,.06)}
     .menuBtn{display:none}
-    .mobile{display:none}
-    @media (max-width: 920px){
+    @media (max-width: 860px){
       .links{display:none}
       .menuBtn{display:inline-flex}
-      .mobile{display:none; padding-bottom:14px;}
-      .mobile.open{display:grid; gap:10px;}
-      .mobile a{padding:12px 14px; border:1px solid var(--stroke); border-radius:14px; background: rgba(255,255,255,.03); font-weight:900; color: var(--muted);}
-      .mobile a:hover{color:#fff}
+      .mobileMenu{display:none;margin-bottom:14px}
+      .mobileMenu.open{display:grid;gap:10px}
+      .mobileMenu a{padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);font-weight:700;color:var(--muted)}
+      .mobileMenu a:hover{color:#fff}
     }
 
     /* Hero */
-    .hero{padding: 56px 0 22px;}
-    .grid2{display:grid; grid-template-columns: 1.15fr .85fr; gap: 18px; align-items:stretch;}
-    @media (max-width: 980px){ .grid2{grid-template-columns:1fr;} }
-    .pills{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px;}
-    h1{
-      margin:0 0 12px;
-      font-size: 48px;
-      line-height:1.03;
+    .hero{padding:64px 0 34px}
+    .grid2{display:grid;grid-template-columns: 1.2fr .8fr;gap:24px;align-items:stretch}
+    @media (max-width: 980px){ .grid2{grid-template-columns:1fr; } }
+    .kicker{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+    .h1{
+      font-size:50px;line-height:1.05;
       letter-spacing:-.04em;
-      font-weight: 950;
+      margin:0 0 14px;
+      font-weight:900;
     }
-    @media (max-width: 520px){ h1{font-size:36px;} }
-    .lead{margin:0; color: var(--muted); font-size:16px; line-height:1.65; max-width: 65ch;}
-    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px;}
-    .mini{display:flex; gap:14px; flex-wrap:wrap; margin-top:14px; color: var(--muted2); font-size:12px;}
-    .mini span{display:inline-flex; align-items:center; gap:8px}
+    @media (max-width: 520px){ .h1{font-size:38px;} }
+    .lead{color:var(--muted);font-size:16px;max-width: 60ch;margin:0 0 22px}
+    .heroActions{display:flex;gap:12px;flex-wrap:wrap}
+    .stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px
+    }
+    @media (max-width: 520px){ .stats{grid-template-columns:1fr; } }
+    .stat{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;padding:14px;
+    }
+    .stat .big{font-weight:900;font-size:18px}
+    .stat .small{font-size:12px;color:var(--muted2);margin-top:4px}
 
     .panel{
-      position:relative;
-      border:1px solid var(--stroke);
-      border-radius: var(--r2);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow: var(--shadow2);
       overflow:hidden;
+      position:relative;
       min-height: 100%;
     }
     .panel::before{
       content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 300px at 15% 0%, rgba(124,58,237,.40), transparent 60%),
-        radial-gradient(700px 300px at 95% 35%, rgba(34,197,94,.28), transparent 60%),
-        radial-gradient(700px 300px at 45% 110%, rgba(59,130,246,.22), transparent 60%);
-      filter: blur(18px);
-      opacity:.85;
+      position:absolute;inset:-2px;
+      background:radial-gradient(600px 260px at 20% 0%, rgba(124,58,237,.35), transparent 55%),
+                 radial-gradient(600px 260px at 90% 30%, rgba(34,197,94,.22), transparent 55%);
+      filter: blur(20px);
+      opacity:.8;
       pointer-events:none;
     }
     .panel > *{position:relative}
-    .pad{padding:18px;}
-    .row{display:flex; align-items:center; justify-content:space-between; gap:12px;}
-    .title{font-weight:950; letter-spacing:-.02em;}
-    .sub{font-size:12px; color: var(--muted2); margin-top:4px;}
-    .kpis{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:14px;}
-    @media (max-width: 520px){ .kpis{grid-template-columns:1fr;} }
-    .kpi{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      border-radius: var(--r);
-      padding: 14px;
+    .panelTitle{display:flex;align-items:center;justify-content:space-between}
+    .panelTitle .t{font-weight:800}
+    .panelTitle .rt{font-size:12px;color:var(--muted2)}
+    .metric{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.20);
+      padding:14px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
     }
-    .kpi .big{font-weight:950; font-size:22px;}
-    .kpi .lab{font-size:12px; color: var(--muted2); margin-top:6px;}
-
+    .metric .left{display:flex;gap:12px;align-items:center}
+    .icon{
+      width:36px;height:36px;border-radius:14px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      display:flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+    }
+    .metric .label{font-weight:800}
+    .metric .sub{font-size:12px;color:var(--muted2)}
+    .metric .val{font-weight:900;font-size:18px}
     .ctaBox{
       margin-top:14px;
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,197,94,.14));
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,197,94,.18));
       padding:14px;
     }
-    .ctaBox .small{font-size:12px; color: var(--muted2); margin-top:4px;}
-    .line{height:1px; background: var(--stroke); margin: 12px 0;}
+    .ctaBox .small{font-size:12px;color:var(--muted2)}
+    .ctaBox .line{height:1px;background:var(--line);margin:12px 0}
+    .ctaBox .btn{width:100%}
 
     /* Sections */
-    section{padding: 44px 0;}
-    .head{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:14px; flex-wrap:wrap;}
-    .head h2{margin:0; font-size: 22px; letter-spacing:-.02em;}
-    .head p{margin:0; color: var(--muted2); font-size:13px;}
-    .grid4{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;}
-    @media (max-width: 980px){ .grid4{grid-template-columns: 1fr;} }
-
+    section{padding:52px 0}
+    .sectionTitle{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .sectionTitle h2{margin:0;font-size:28px;letter-spacing:-.02em}
+    .sectionTitle p{margin:0;color:var(--muted2);font-size:13px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width: 980px){ .cards{grid-template-columns:1fr;} }
     .card{
-      border:1px solid var(--stroke);
-      border-radius: var(--r2);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 14px 40px rgba(0,0,0,.22);
-      padding: 18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
     }
-    .card h3{margin:10px 0 6px; font-size:15px;}
-    .card p{margin:0; color: var(--muted); font-size:13px; line-height:1.6;}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      font-size:12px;
-      font-weight:900;
-    }
+    .card h3{margin:10px 0 8px;font-size:15px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+    .bullets{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+    .bullets li{display:flex;gap:10px;color:var(--muted);font-size:13px}
     .dot{
-      width:18px; height:18px; border-radius: 8px;
-      background: rgba(34,197,94,.18);
-      border: 1px solid rgba(34,197,94,.35);
-      display:grid; place-items:center;
-      flex:none;
-      margin-top:1px;
+      width:18px;height:18px;border-radius:8px;background:rgba(34,197,94,.18);
+      border:1px solid rgba(34,197,94,.35);display:inline-flex;align-items:center;justify-content:center;
+      flex:0 0 auto;margin-top:1px;
     }
-    .ul{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:8px;}
-    .li{display:flex; gap:10px; color: var(--muted); font-size:13px;}
 
-    .split{display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:stretch;}
-    @media (max-width: 980px){ .split{grid-template-columns:1fr;} }
-
-    /* Calculator */
-    .field label{display:block; font-size:12px; color: var(--muted2); font-weight:900; margin-bottom:6px;}
-    .field input{
+    /* ROI Calculator */
+    .calcWrap{
+      display:grid;grid-template-columns:1fr .9fr;gap:14px;align-items:start;
+    }
+    @media (max-width: 980px){ .calcWrap{grid-template-columns:1fr;} }
+    .calc{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+    .calc h3{margin:0 0 12px;font-size:16px}
+    .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 520px){ .formGrid{grid-template-columns:1fr;} }
+    label{display:block;font-size:12px;color:var(--muted2);font-weight:700;margin:0 0 6px}
+    input{
       width:100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      color: var(--text);
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      color:#fff;
       outline:none;
-      font-weight:800;
+      font-weight:700;
     }
-    .field input:focus{border-color: rgba(124,58,237,.65); box-shadow: 0 0 0 3px rgba(124,58,237,.18);}
-    .formGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
-    @media (max-width: 520px){ .formGrid{grid-template-columns: 1fr;} }
-
-    .stats3{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top:12px;}
-    @media (max-width: 520px){ .stats3{grid-template-columns:1fr;} }
-    .stat{
-      padding: 14px;
-      border-radius: var(--r);
+    input:focus{border-color:rgba(124,58,237,.55);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+    .hint{margin-top:10px;font-size:12px;color:var(--muted2)}
+    .results{
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+      background:linear-gradient(180deg, rgba(0,0,0,.22), rgba(255,255,255,.02));
+      border-radius:var(--radius2);
+      padding:18px;
     }
-    .stat .v{font-weight:950; font-size:20px;}
-    .stat .k{color: var(--muted2); font-size:12px; margin-top:6px; font-weight:900;}
-    .barwrap{
-      margin-top:12px;
-      padding: 14px;
-      border-radius: var(--r);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+    .resRow{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+      padding:12px 0;border-bottom:1px solid var(--line);
     }
-    .barlabel{display:flex; justify-content:space-between; color: var(--muted2); font-size:12px; font-weight:900; margin-bottom:8px;}
-    .bar{height:12px; border-radius:999px; background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.12); overflow:hidden;}
-    .bar > span{
-      display:block; height:100%;
-      width:0%;
-      background: linear-gradient(90deg, rgba(34,197,94,.95), rgba(124,58,237,.90));
-      transition: width .25s ease;
-    }
-    .note{margin-top:10px; color: var(--muted2); font-size:12px; line-height:1.6;}
-    .tagline{
-      margin-top:10px;
-      font-weight:950;
-      letter-spacing:-.02em;
-      color: rgba(255,255,255,.86);
-    }
+    .resRow:last-child{border-bottom:none}
+    .resRow .k{color:var(--muted2);font-size:12px;font-weight:800}
+    .resRow .v{font-size:18px;font-weight:900}
+    .good{color:#86efac}
+    .warn{color:#fde68a}
+    .bad{color:#fca5a5}
 
-    /* Footer */
-    footer{
-      border-top:1px solid var(--stroke);
-      background: rgba(0,0,0,.16);
-      padding: 28px 0 76px;
-      margin-top: 12px;
-      color: var(--muted2);
+    /* Pricing / CTA */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width: 980px){ .pricing{grid-template-columns:1fr;} }
+    .priceCard{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+    .priceCard.featured{
+      border-color:rgba(124,58,237,.55);
+      background:linear-gradient(180deg, rgba(124,58,237,.18), rgba(255,255,255,.03));
+    }
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(124,58,237,.20);
+      border:1px solid rgba(124,58,237,.35);
+      font-size:12px;font-weight:800;color:#e9d5ff;
+    }
+    .priceCard h3{margin:10px 0 6px}
+    .price{
+      font-size:30px;font-weight:900;letter-spacing:-.03em;margin:6px 0 10px;
+    }
+    .price small{font-size:12px;color:var(--muted2);font-weight:800}
+    .footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 44px;
+      color:var(--muted2);
       font-size:12px;
     }
-    .foot{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;}
 
-    /* WhatsApp floating */
+    /* Floating WhatsApp */
     .wa{
-      position: fixed; right: 16px; bottom: 16px; z-index: 60;
-      display:flex; align-items:center; gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: rgba(34,197,94,.92);
-      color: #04130a;
-      font-weight: 950;
-      border: 1px solid rgba(255,255,255,.20);
+      position:fixed;right:16px;bottom:16px;z-index:40;
+      width:54px;height:54px;border-radius:18px;
+      background:linear-gradient(135deg, rgba(34,197,94,1), rgba(16,185,129,1));
       box-shadow: var(--shadow);
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,.22);
     }
-    .wa:hover{filter: brightness(1.05)}
-    .wa svg{width:18px; height:18px;}
+    .wa:hover{transform:translateY(-1px)}
+    .sr{position:absolute;left:-9999px}
   </style>
 </head>
 
 <body>
-  <!-- Topbar -->
+  <!-- Top bar -->
   <div class="topbar">
-    <div class="wrap">
-      <div class="in">
+    <div class="container">
+      <div class="inner">
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-          <span class="chip">🤖 RPA + IA</span>
+          <span class="chip">🛡️ Automação com governança</span>
           <span class="chip">⚡ MVP em 7–21 dias</span>
-          <span class="chip">🛡️ Governança + auditoria</span>
-          <span class="chip">📈 ROI antes de construir</span>
+          <span class="chip">📈 Foco em ROI</span>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end">
           <span class="chip">📍 São Paulo • SP</span>
-          <span class="chip">📞 WhatsApp: (11) 97117-0414</span>
+          <span class="chip">✉️ contato@rpasystems.com</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Header -->
-  <div class="header">
-    <div class="wrap">
+  <header class="header">
+    <div class="container">
       <div class="nav">
-        <a class="brand" href="#top" aria-label="RPA Systems AI">
-          <!-- LOGO PREMIUM (robô + IA) -->
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <a class="brand" href="#top">
+          <!-- LOGO PROPOSTA (SVG) -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="RPA Systems">
             <defs>
-              <linearGradient id="gAI" x1="6" y1="6" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <linearGradient id="g" x1="6" y1="6" x2="40" y2="40" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#7C3AED"/>
                 <stop offset="1" stop-color="#22C55E"/>
               </linearGradient>
             </defs>
-            <rect x="3" y="3" width="38" height="38" rx="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.24)"/>
-            <rect x="12" y="14" width="20" height="16" rx="6" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.35)"/>
-            <circle cx="18" cy="22" r="2.2" fill="url(#gAI)"/>
-            <circle cx="26" cy="22" r="2.2" fill="url(#gAI)"/>
-            <path d="M17 26c1.8 2 6.2 2 8 0" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M22 14V11" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="22" cy="10" r="2" fill="url(#gAI)"/>
-            <path d="M12 32h20" stroke="rgba(255,255,255,.22)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M16 32v3M22 32v3M28 32v3" stroke="url(#gAI)" stroke-width="2" stroke-linecap="round"/>
+            <rect x="3" y="3" width="38" height="38" rx="14" stroke="rgba(255,255,255,.25)" fill="rgba(255,255,255,.06)"/>
+            <path d="M14 24.5c3.2-7.6 12.8-7.6 16 0" stroke="url(#g)" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M16.5 18.5h11" stroke="rgba(255,255,255,.70)" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="22" cy="24.5" r="3.3" fill="rgba(255,255,255,.85)"/>
           </svg>
 
           <div class="stack">
-            <div class="name">RPA Systems <span style="opacity:.85">AI</span></div>
-            <div class="tag">Automação + Inteligência Artificial</div>
+            <div class="name">rpasystems</div>
+            <div class="tag">Automação inteligente</div>
           </div>
         </a>
 
-        <div class="links">
+        <nav class="links">
           <a href="#servicos">Serviços</a>
-          <a href="#ia">Atividades de IA</a>
-          <a href="#roi">Simulador ROI</a>
+          <a href="#metodo">Como funciona</a>
+          <a href="#simulador">Simulador ROI</a>
+          <a href="#planos">Planos</a>
           <a href="#contato">Contato</a>
-          <a class="btn primary" href="#roi">Simular ROI</a>
-        </div>
+          <a class="btn primary" href="#contato">Falar com especialista →</a>
+        </nav>
 
-        <button class="btn menuBtn" id="menuBtn" type="button">Menu</button>
+        <button class="btn ghost menuBtn" id="menuBtn" type="button">Menu</button>
       </div>
 
-      <div class="mobile" id="mobile">
+      <div class="mobileMenu" id="mobileMenu">
         <a href="#servicos">Serviços</a>
-        <a href="#ia">Atividades de IA</a>
-        <a href="#roi">Simulador ROI</a>
+        <a href="#metodo">Como funciona</a>
+        <a href="#simulador">Simulador ROI</a>
+        <a href="#planos">Planos</a>
         <a href="#contato">Contato</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- HERO -->
-  <main id="top" class="wrap">
+  <!-- Hero -->
+  <main id="top" class="container">
     <section class="hero">
       <div class="grid2">
         <div>
-          <div class="pills">
-            <span class="chip">✅ Diagnóstico rápido</span>
-            <span class="chip">✅ Prioridade por impacto</span>
-            <span class="chip">✅ Logs + trilha de auditoria</span>
+          <div class="kicker">
+            <span class="chip">✅ Diagnóstico + Backlog priorizado</span>
+            <span class="chip">🔒 Segurança & trilha de auditoria</span>
+            <span class="chip">📊 KPIs e SLA</span>
           </div>
 
-          <h1>Automação que <span style="opacity:.8">economiza</span> e IA que <span style="opacity:.8">acelera decisão</span>.</h1>
+          <h1 class="h1">Automação que vira <span style="color:rgba(255,255,255,.78)">resultado</span>.</h1>
           <p class="lead">
-            A <strong>RPA Systems AI</strong> transforma processos manuais em fluxo automático com <strong>RPA</strong> e <strong>IA</strong>
-            (classificação, extração de dados, copilotos e atendimento). Você enxerga o <strong>ROI</strong> antes do investimento.
+            A <strong>RPA Systems</strong> entrega RPA, integrações e melhoria de processos com foco em eficiência real.
+            Antes de construir, nós estimamos o ROI. Depois, colocamos em produção com governança.
           </p>
 
-          <div class="actions">
-            <a class="btn primary" href="#roi">Calcular payback e ROI</a>
-            <a class="btn" href="#ia">Ver atividades de IA</a>
-            <a class="btn" href="https://wa.me/5511971170414" target="_blank" rel="noopener">WhatsApp direto</a>
+          <div class="heroActions">
+            <a class="btn primary" href="#simulador">Calcular ROI agora →</a>
+            <a class="btn ghost" href="#servicos">Ver serviços</a>
           </div>
 
-          <div class="mini">
-            <span>⚡ MVP em 7–21 dias</span>
-            <span>🛡️ Governança e SLA</span>
-            <span>📊 Métrica antes/depois</span>
+          <div class="stats">
+            <div class="stat">
+              <div class="big">+30%</div>
+              <div class="small">Eficiência em rotinas críticas</div>
+            </div>
+            <div class="stat">
+              <div class="big">7–21 dias</div>
+              <div class="small">MVP em produção</div>
+            </div>
+            <div class="stat">
+              <div class="big">98%+</div>
+              <div class="small">Taxa de sucesso (meta)</div>
+            </div>
           </div>
-
-          <div class="tagline">Se dá pra medir, dá pra automatizar.</div>
         </div>
 
         <div class="panel">
-          <div class="pad">
-            <div class="row">
+          <div class="panelTitle">
+            <div class="t">Painel de operação</div>
+            <div class="rt">Tempo real</div>
+          </div>
+
+          <div class="metric">
+            <div class="left">
+              <div class="icon">🤖</div>
               <div>
-                <div class="title">Painel de Operação</div>
-                <div class="sub">Exemplo de monitoramento & performance</div>
+                <div class="label">Robôs em execução</div>
+                <div class="sub">filas priorizadas</div>
               </div>
-              <span class="chip" style="margin:0">Ao vivo</span>
             </div>
+            <div class="val">12</div>
+          </div>
 
-            <div class="kpis">
-              <div class="kpi">
-                <div class="big">98,4%</div>
-                <div class="lab">taxa de sucesso</div>
-              </div>
-              <div class="kpi">
-                <div class="big">320h</div>
-                <div class="lab">horas economizadas/mês</div>
-              </div>
-              <div class="kpi">
-                <div class="big">SLA</div>
-                <div class="lab">alertas + governança</div>
+          <div class="metric">
+            <div class="left">
+              <div class="icon">📈</div>
+              <div>
+                <div class="label">Taxa de sucesso</div>
+                <div class="sub">últimos 7 dias</div>
               </div>
             </div>
+            <div class="val">98,4%</div>
+          </div>
 
-            <div class="ctaBox">
-              <div style="font-weight:950; letter-spacing:-.01em;">Quer priorizar o que dá mais retorno?</div>
-              <div class="small">Eu devolvo um plano com impacto, risco e ROI estimado.</div>
-              <div class="line"></div>
-              <a class="btn primary" style="width:100%" href="#contato">Quero um diagnóstico</a>
+          <div class="metric">
+            <div class="left">
+              <div class="icon">⏱️</div>
+              <div>
+                <div class="label">Horas economizadas</div>
+                <div class="sub">mês corrente</div>
+              </div>
             </div>
+            <div class="val">320h</div>
+          </div>
+
+          <div class="ctaBox">
+            <div style="font-weight:900;font-size:14px">Quer saber onde automatizar primeiro?</div>
+            <div class="small">Nós devolvemos um plano com ROI estimado e priorização.</div>
+            <div class="line"></div>
+            <a class="btn primary" href="#contato">Receber diagnóstico →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVIÇOS -->
+    <!-- Serviços -->
     <section id="servicos">
-      <div class="head">
+      <div class="sectionTitle">
         <div>
           <h2>Serviços</h2>
-          <p>Entrega rápida com estabilidade, documentação e métricas.</p>
+          <p>O que fazemos com foco em resultado, governança e escala.</p>
         </div>
-        <span class="chip">Foco: eficiência + governança</span>
       </div>
 
-      <div class="grid4">
+      <div class="cards">
         <div class="card">
-          <span class="badge">🤖 RPA</span>
-          <h3>Robôs de automação (rotinas repetitivas)</h3>
-          <p>Automatização ponta a ponta com logs, monitoramento e evidências para auditoria.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> Filas e orquestração</li>
-            <li class="li"><span class="dot">✓</span> Tratamento de exceções</li>
-            <li class="li"><span class="dot">✓</span> Alertas e SLA</li>
+          <div class="chip">🤖 RPA</div>
+          <h3>Robôs estáveis + monitoramento</h3>
+          <p>Automação ponta a ponta de tarefas repetitivas com logs, alertas e rastreabilidade.</p>
+          <ul class="bullets">
+            <li><span class="dot">✓</span> MVP rápido</li>
+            <li><span class="dot">✓</span> Orquestração e filas</li>
+            <li><span class="dot">✓</span> Observabilidade</li>
           </ul>
         </div>
 
         <div class="card">
-          <span class="badge">🧭 Processos</span>
-          <h3>AS IS → TO BE (melhoria e padronização)</h3>
-          <p>Mapeamento, gargalos, risco e priorização por impacto financeiro/operacional.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> Priorização por ROI</li>
-            <li class="li"><span class="dot">✓</span> Matriz custo × risco</li>
-            <li class="li"><span class="dot">✓</span> Roadmap de execução</li>
+          <div class="chip">🧭 Processos</div>
+          <h3>AS IS → TO BE + priorização</h3>
+          <p>Mapeamos a realidade, desenhamos o TO BE e priorizamos por custo, risco e impacto.</p>
+          <ul class="bullets">
+            <li><span class="dot">✓</span> Diagnóstico em 1–2 semanas</li>
+            <li><span class="dot">✓</span> Matriz custo × risco</li>
+            <li><span class="dot">✓</span> Roadmap de execução</li>
           </ul>
         </div>
 
         <div class="card">
-          <span class="badge">🔗 Integrações</span>
-          <h3>Integrações leves e automação de dados</h3>
-          <p>Integra sistemas e automatiza relatórios, conciliações, rotinas críticas.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> APIs / Webhooks</li>
-            <li class="li"><span class="dot">✓</span> Pipelines simples</li>
-            <li class="li"><span class="dot">✓</span> Dashboards operacionais</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="badge">🧠 IA</span>
-          <h3>IA aplicada (LLM) com governança</h3>
-          <p>IA para entender textos, extrair dados e acelerar decisões — com rastreabilidade.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> Classificação e roteamento</li>
-            <li class="li"><span class="dot">✓</span> Extração de dados (PDF/e-mail)</li>
-            <li class="li"><span class="dot">✓</span> Copilotos e chatbots</li>
+          <div class="chip">🔗 Integrações</div>
+          <h3>APIs, dados e automação de rotinas</h3>
+          <p>Integramos sistemas e automatizamos relatórios, conciliações e rotinas críticas.</p>
+          <ul class="bullets">
+            <li><span class="dot">✓</span> APIs & webhooks</li>
+            <li><span class="dot">✓</span> Automação de dados</li>
+            <li><span class="dot">✓</span> Dashboards operacionais</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ATIVIDADES DE IA -->
-    <section id="ia">
-      <div class="head">
+    <!-- Método -->
+    <section id="metodo">
+      <div class="sectionTitle">
         <div>
-          <h2>Atividades de IA que geram ROI</h2>
-          <p>Casos práticos para vender “IA + automação” de verdade.</p>
+          <h2>Como funciona</h2>
+          <p>Um método simples e objetivo para entregar rápido — sem virar manutenção infinita.</p>
         </div>
-        <span class="chip">IA + RPA = escala</span>
       </div>
 
-      <div class="grid4">
-        <div class="card">
-          <span class="badge">📩 Atendimento</span>
-          <h3>Triagem inteligente de e-mails e chamados</h3>
-          <p>IA classifica, prioriza, resume e sugere resposta. RPA executa ações repetitivas.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> Categorizar + encaminhar</li>
-            <li class="li"><span class="dot">✓</span> Resumo automático</li>
-            <li class="li"><span class="dot">✓</span> Resposta assistida</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="badge">📄 Documentos</span>
-          <h3>Extração de dados e validação</h3>
-          <p>Extrai campos, confere regras e reduz retrabalho em documentos e anexos.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> PDFs, imagens, anexos</li>
-            <li class="li"><span class="dot">✓</span> Regras de negócio</li>
-            <li class="li"><span class="dot">✓</span> Evidências e auditoria</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="badge">🔎 Qualidade</span>
-          <h3>Detecção de anomalias</h3>
-          <p>IA identifica divergências e padrões fora do normal, com alerta e trilha de evidência.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> Redução de risco</li>
-            <li class="li"><span class="dot">✓</span> Alertas inteligentes</li>
-            <li class="li"><span class="dot">✓</span> Painel de exceções</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="badge">🤖 Copiloto</span>
-          <h3>Copiloto interno com base da empresa</h3>
-          <p>Assistente para perguntas, procedimentos, SLA e execução assistida com RPA.</p>
-          <ul class="ul">
-            <li class="li"><span class="dot">✓</span> Busca em base interna</li>
-            <li class="li"><span class="dot">✓</span> Sugestão de ação</li>
-            <li class="li"><span class="dot">✓</span> Padronização e compliance</li>
-          </ul>
-        </div>
+      <div class="cards">
+        <div class="card"><div class="chip">1) Diagnóstico</div><h3>Entender e medir</h3><p>Volume, erros, risco, tempo e custo. Saída: backlog priorizado.</p></div>
+        <div class="card"><div class="chip">2) Desenho</div><h3>TO BE + critérios</h3><p>KPIs, SLA, controles e governança. O que é sucesso fica claro.</p></div>
+        <div class="card"><div class="chip">3) Construção</div><h3>MVP rápido</h3><p>Construção, testes, logs e documentação. Entrega e iteração curta.</p></div>
+        <div class="card"><div class="chip">4) Operação</div><h3>Estabilidade</h3><p>Monitoramento, suporte e melhorias. Automação com rastreabilidade.</p></div>
       </div>
     </section>
 
-    <!-- ROI -->
-    <section id="roi">
-      <div class="head">
+    <!-- Simulador ROI -->
+    <section id="simulador">
+      <div class="sectionTitle">
         <div>
           <h2>Simulador de Payback e ROI</h2>
-          <p>Estime retorno em minutos (use conservador e valide depois).</p>
+          <p>Faça uma estimativa rápida para ter conversa de negócio com números.</p>
         </div>
-        <span class="chip">Decisão com números</span>
       </div>
 
-      <div class="split">
-        <div class="card">
-          <span class="badge">📊 Inputs</span>
-          <h3 style="margin:10px 0 6px;">Preencha os dados</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px">Inclua economia, receita, retrabalho e custo mensal. O simulador calcula payback e ROI no horizonte.</p>
+      <div class="calcWrap">
+        <div class="calc">
+          <h3>Preencha os dados</h3>
 
-          <div class="formGrid" style="margin-top:14px;">
-            <div class="field">
-              <label>Investimento inicial (R$)</label>
-              <input id="inv" type="number" min="0" value="15000" />
+          <div class="formGrid">
+            <div>
+              <label>Horas economizadas por mês</label>
+              <input id="hoursSaved" type="number" min="0" step="1" value="120" />
             </div>
-            <div class="field">
-              <label>Economia mensal (R$)</label>
-              <input id="sav" type="number" min="0" value="3500" />
+            <div>
+              <label>Custo/hora (R$) do time</label>
+              <input id="hourCost" type="number" min="0" step="1" value="60" />
             </div>
-            <div class="field">
-              <label>Ganho mensal de receita (R$) (opcional)</label>
-              <input id="rev" type="number" min="0" value="0" />
+
+            <div>
+              <label>Custo implantação (R$) — único</label>
+              <input id="implCost" type="number" min="0" step="1" value="6000" />
             </div>
-            <div class="field">
-              <label>Retrabalho evitado (R$/mês) (opcional)</label>
-              <input id="rework" type="number" min="0" value="800" />
+            <div>
+              <label>Manutenção mensal (R$)</label>
+              <input id="maintCost" type="number" min="0" step="1" value="500" />
             </div>
-            <div class="field">
-              <label>Custo mensal de operação (R$)</label>
-              <input id="ops" type="number" min="0" value="500" />
+
+            <div>
+              <label>Licenças/ferramentas mensais (R$)</label>
+              <input id="toolsCost" type="number" min="0" step="1" value="0" />
             </div>
-            <div class="field">
-              <label>Risco/atrito (%)</label>
-              <input id="risk" type="number" min="0" max="90" value="10" />
-            </div>
-            <div class="field">
-              <label>Horizonte (meses)</label>
-              <input id="hzn" type="number" min="3" max="60" value="12" />
-            </div>
-            <div class="field">
-              <label>Observação (para WhatsApp)</label>
-              <input id="obs" type="text" value="Processo: (descreva aqui em 1 linha)" />
+            <div>
+              <label>Erro/retrabalho evitado (R$/mês)</label>
+              <input id="errorSavings" type="number" min="0" step="1" value="800" />
             </div>
           </div>
 
-          <div class="actions" style="margin-top:14px;">
-            <button class="btn primary" id="calcBtn" type="button">Calcular ROI</button>
-            <button class="btn" id="waBtn" type="button">Enviar simulação no WhatsApp</button>
-          </div>
+          <p class="hint">
+            Dica: coloque um valor conservador. ROI bom de verdade continua bom mesmo com números conservadores.
+          </p>
 
-          <div class="note">
-            * O “risco/atrito” desconta parte do benefício (exceções, variação de volume, maturidade do processo).
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+            <button class="btn primary" type="button" id="calcBtn">Calcular →</button>
+            <button class="btn ghost" type="button" id="shareBtn">Gerar mensagem p/ WhatsApp</button>
           </div>
         </div>
 
-        <div class="panel">
-          <div class="pad">
-            <div class="row">
-              <div>
-                <div class="title">Resultado</div>
-                <div class="sub">Payback + ROI no horizonte escolhido</div>
-              </div>
-              <span class="chip" id="badge">Aguardando</span>
-            </div>
+        <div class="results">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <div style="font-weight:900;font-size:16px">Resultados</div>
+            <span class="chip" id="badge">Aguardando cálculo</span>
+          </div>
 
-            <div class="stats3" style="margin-top:14px;">
-              <div class="stat">
-                <div class="v" id="payback">—</div>
-                <div class="k">Payback (meses)</div>
-              </div>
-              <div class="stat">
-                <div class="v" id="roiOut">—</div>
-                <div class="k">ROI no horizonte</div>
-              </div>
-              <div class="stat">
-                <div class="v" id="netOut">—</div>
-                <div class="k">Ganho líquido total</div>
-              </div>
+          <div class="resRow">
+            <div>
+              <div class="k">Ganho bruto mensal</div>
+              <div class="k" style="font-weight:700">horas × custo/hora + retrabalho evitado</div>
             </div>
+            <div class="v" id="gross">—</div>
+          </div>
 
-            <div class="barwrap">
-              <div class="barlabel">
-                <span>Progresso do payback</span>
-                <span id="pbInfo">—</span>
-              </div>
-              <div class="bar"><span id="pbBar"></span></div>
-              <div class="note" id="explain" style="margin-top:10px;">Preencha e clique em “Calcular ROI”.</div>
+          <div class="resRow">
+            <div>
+              <div class="k">Benefício líquido mensal</div>
+              <div class="k" style="font-weight:700">ganho bruto − custos mensais</div>
             </div>
+            <div class="v" id="net">—</div>
+          </div>
 
-            <div class="ctaBox">
-              <div style="font-weight:950">Quer validar no seu cenário real?</div>
-              <div class="small">Me chama e eu devolvo um plano com priorização e ROI estimado.</div>
-              <div class="line"></div>
-              <a class="btn primary" style="width:100%" href="#contato">Quero proposta com ROI</a>
+          <div class="resRow">
+            <div>
+              <div class="k">Payback estimado</div>
+              <div class="k" style="font-weight:700">implantação / benefício líquido</div>
             </div>
+            <div class="v" id="payback">—</div>
+          </div>
+
+          <div class="resRow">
+            <div>
+              <div class="k">ROI em 12 meses</div>
+              <div class="k" style="font-weight:700">(benefícios − custos) / custos</div>
+            </div>
+            <div class="v" id="roi">—</div>
+          </div>
+
+          <div class="ctaBox" style="margin-top:14px">
+            <div style="font-weight:900;font-size:14px">Quer validar esse ROI com seu processo real?</div>
+            <div class="small">Me chama no WhatsApp e eu te devolvo um plano em cima do seu cenário.</div>
+            <div class="line"></div>
+            <a class="btn primary" href="#contato">Quero meu diagnóstico →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTATO -->
+    <!-- Planos -->
+    <section id="planos">
+      <div class="sectionTitle">
+        <div>
+          <h2>Planos</h2>
+          <p>Flexível por escopo. Comece pequeno e escale com governança.</p>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="priceCard">
+          <span class="tag">Start</span>
+          <h3>1 processo crítico</h3>
+          <div class="price">R$ 1.500 <small>/mês</small></div>
+          <ul class="bullets">
+            <li><span class="dot">✓</span> diagnóstico rápido</li>
+            <li><span class="dot">✓</span> 1 automação/MVP</li>
+            <li><span class="dot">✓</span> documentação e handover</li>
+          </ul>
+          <a class="btn primary" href="#contato" style="width:100%;margin-top:14px">Quero esse plano →</a>
+        </div>
+
+        <div class="priceCard featured">
+          <span class="tag">Mais escolhido</span>
+          <h3>Evolução contínua</h3>
+          <div class="price">R$ 3.000 <small>/mês</small></div>
+          <ul class="bullets">
+            <li><span class="dot">✓</span> backlog priorizado</li>
+            <li><span class="dot">✓</span> até 2 automações/mês</li>
+            <li><span class="dot">✓</span> monitoramento + ajustes</li>
+            <li><span class="dot">✓</span> governança e SLA</li>
+          </ul>
+          <a class="btn primary" href="#contato" style="width:100%;margin-top:14px">Falar com especialista →</a>
+        </div>
+
+        <div class="priceCard">
+          <span class="tag">Enterprise</span>
+          <h3>Operação completa</h3>
+          <div class="price">Sob consulta</div>
+          <ul class="bullets">
+            <li><span class="dot">✓</span> centro de automação</li>
+            <li><span class="dot">✓</span> múltiplas áreas e integrações</li>
+            <li><span class="dot">✓</span> segurança e auditoria</li>
+          </ul>
+          <a class="btn primary" href="#contato" style="width:100%;margin-top:14px">Solicitar proposta →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
     <section id="contato">
-      <div class="head">
+      <div class="sectionTitle">
         <div>
           <h2>Contato</h2>
-          <p>Mensagem objetiva → diagnóstico → proposta.</p>
+          <p>Mensagem rápida → conversa objetiva → proposta com ROI.</p>
         </div>
-        <span class="chip">Resposta rápida</span>
       </div>
 
-      <div class="split">
-        <div class="card">
-          <span class="badge">📞 WhatsApp</span>
-          <h3 style="margin:10px 0 6px;">Fale direto comigo</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px">Diga qual processo, volume/mês e sistemas envolvidos.</p>
-
-          <a class="btn primary" style="margin-top:14px; width:100%;"
-             href="https://wa.me/5511971170414"
-             target="_blank" rel="noopener">Abrir WhatsApp agora</a>
-
-          <div class="note">Se quiser, depois você troca o e-mail/empresa aqui no site.</div>
+      <div class="calcWrap">
+        <div class="calc">
+          <h3>Fale direto no WhatsApp</h3>
+          <p style="margin:0;color:var(--muted);font-size:13px">
+            Clique no botão e me diga qual processo você quer automatizar (volume, dor, sistemas envolvidos).
+          </p>
+          <a class="btn primary" style="margin-top:14px;width:100%" id="waCta" href="#">Abrir WhatsApp →</a>
+          <p class="hint">Seu WhatsApp já está configurado no site.</p>
         </div>
 
-        <div class="panel">
-          <div class="pad">
-            <div class="title">Checklist do melhor ROI</div>
-            <div class="sub">O que mais dá retorno em automação + IA</div>
-
-            <ul class="ul" style="margin-top:14px;">
-              <li class="li"><span class="dot">✓</span> Alto volume e repetição</li>
-              <li class="li"><span class="dot">✓</span> Regras claras + poucas exceções</li>
-              <li class="li"><span class="dot">✓</span> Erro/retrabalho relevante</li>
-              <li class="li"><span class="dot">✓</span> Necessidade de auditoria/compliance</li>
-              <li class="li"><span class="dot">✓</span> Ganho de tempo para o time produzir mais</li>
-            </ul>
-
-            <div class="ctaBox">
-              <div style="font-weight:950">Quer que eu faça o diagnóstico por você?</div>
-              <div class="small">Eu te mando um plano de automação + IA com ROI estimado.</div>
-              <div class="line"></div>
-              <a class="btn primary" style="width:100%" href="https://wa.me/5511971170414" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-            </div>
-          </div>
+        <div class="results">
+          <div style="font-weight:900;font-size:16px">Checklist para um bom ROI</div>
+          <div class="resRow"><div class="k">Repetição / Volume</div><div class="v good">✔</div></div>
+          <div class="resRow"><div class="k">Regra clara</div><div class="v good">✔</div></div>
+          <div class="resRow"><div class="k">Retrabalho / Erro</div><div class="v good">✔</div></div>
+          <div class="resRow"><div class="k">Risco / Compliance</div><div class="v warn">▲</div></div>
+          <div class="resRow"><div class="k">Métrica de sucesso</div><div class="v good">✔</div></div>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="wrap">
-      <div class="foot">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span class="chip">© <span id="year"></span> RPA Systems AI</span>
-          <span class="chip">Automação + IA com governança</span>
+    <div class="footer">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="chip">© <span id="year"></span> rpasystems</span>
+          <span class="chip">Automação inteligente com governança</span>
         </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
           <span class="chip">São Paulo • SP</span>
-          <span class="chip">WhatsApp: (11) 97117-0414</span>
+          <span class="chip">contato@rpasystems.com</span>
         </div>
       </div>
     </div>
-  </footer>
+  </main>
 
-  <!-- WhatsApp floating -->
-  <a class="wa" href="https://wa.me/5511971170414" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <path d="M26.7 15.5c0 6.1-5 11.1-11.1 11.1-1.9 0-3.6-.5-5.1-1.3L5 27l1.8-5.3c-.9-1.5-1.4-3.3-1.4-5.2C5.4 10.4 10.4 5.4 16.6 5.4c6.1 0 11.1 5 11.1 11.1Z" stroke="rgba(0,0,0,.75)" stroke-width="2"/>
-      <path d="M13.7 12.1c.2-.4.4-.4.6-.4h.5c.2 0 .5.1.7.5.2.4.9 2 .9 2.2s.1.3 0 .5c-.1.2-.2.3-.3.4l-.4.4c-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.1 2.4 1.4 2.8 1.6.4.2.6.2.8 0 .2-.2 1-1.1 1.2-1.4.2-.3.4-.2.7-.1.3.1 2 .9 2.4 1.1.4.2.6.3.7.4.1.1.1.7-.1 1.4-.2.7-1.4 1.4-1.9 1.5-.5.1-1 .2-1.7 0-.7-.2-1.6-.5-2.8-1.1-1.5-.8-2.8-1.9-4-3.3-1.2-1.4-1.9-3.1-2-3.3-.1-.2-.7-1.8-.7-2.7 0-.9.3-1.3.5-1.7Z" fill="rgba(0,0,0,.75)"/>
+  <!-- Floating WhatsApp -->
+  <a class="wa" id="waFloat" href="#" target="_blank" rel="noopener">
+    <span class="sr">WhatsApp</span>
+    <!-- ícone -->
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16 3C9.4 3 4 8.2 4 14.6c0 2.6.9 5 2.5 7L5 29l7.6-1.5c1.1.3 2.2.5 3.4.5 6.6 0 12-5.2 12-11.6S22.6 3 16 3Z" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+      <path d="M13.3 11.2c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.4l.8 2c.1.3.1.5-.1.7l-.5.6c-.2.2-.2.5 0 .7.4.7 1.5 2.2 3.3 3.1.6.3.9.2 1.2 0l.8-.9c.2-.2.4-.3.7-.2l2 .9c.3.1.4.4.4.6 0 .3 0 .8-.3 1.2-.4.5-1.1 1.2-2.5 1.2-1.4 0-3-.5-4.8-2-1.7-1.4-3-3.3-3.4-4.5-.4-1.1-.3-2 .3-2.8.3-.4.8-.9 1-1.5Z" fill="white"/>
     </svg>
-    WhatsApp
   </a>
 
   <script>
-    // ===== Config =====
-    const WHATSAPP_NUMBER = "5511971170414";
-    const wa = (text) => https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)};
+    // ======= CONFIG =======
+    const WHATSAPP_NUMBER = "5511971170414"; // seu número
+    const waBase = (text) => https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)};
 
-    // ===== Mobile menu =====
-    const menuBtn = document.getElementById("menuBtn");
-    const mobile = document.getElementById("mobile");
+    // ======= UI HELPERS =======
+    const brl = (n) => new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n);
+    const pct = (n) => new Intl.NumberFormat("pt-BR",{style:"percent",maximumFractionDigits:0}).format(n);
+    const byId = (id) => document.getElementById(id);
+
+    // ======= MOBILE MENU =======
+    const menuBtn = byId("menuBtn");
+    const mobileMenu = byId("mobileMenu");
     if(menuBtn){
-      menuBtn.addEventListener("click", () => mobile.classList.toggle("open"));
-      mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobile.classList.remove("open")));
+      menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("open"));
+      mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
     }
 
-    // ===== Year =====
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // ======= YEAR =======
+    byId("year").textContent = new Date().getFullYear();
 
-    // ===== Helpers =====
-    const fmtBRL = (n) => n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-    const fmtPct = (n) => (isFinite(n) ? (n*100).toFixed(1) + '%' : '—');
-    const clamp = (n,a,b) => Math.max(a, Math.min(b, n));
+    // ======= WhatsApp CTAs =======
+    const defaultMsg = "Olá! Quero um diagnóstico para automação (RPA/Processos). Meu processo é: ";
+    byId("waFloat").href = waBase(defaultMsg);
+    byId("waCta").href = waBase(defaultMsg);
 
-    // ===== ROI Calc =====
-    function calc(){
-      const inv = Math.max(0, Number(document.getElementById('inv').value || 0));
-      const sav = Math.max(0, Number(document.getElementById('sav').value || 0));
-      const rev = Math.max(0, Number(document.getElementById('rev').value || 0));
-      const rework = Math.max(0, Number(document.getElementById('rework').value || 0));
-      const ops = Math.max(0, Number(document.getElementById('ops').value || 0));
-      const risk = clamp(Number(document.getElementById('risk').value || 0), 0, 90) / 100;
-      const hzn = clamp(Number(document.getElementById('hzn').value || 12), 3, 60);
+    // ======= ROI CALC =======
+    const calc = () => {
+      const hoursSaved = Number(byId("hoursSaved").value || 0);
+      const hourCost   = Number(byId("hourCost").value || 0);
 
-      const grossMonthly = sav + rev + rework;
-      const netMonthlyBeforeRisk = Math.max(0, grossMonthly - ops);
-      const netMonthly = netMonthlyBeforeRisk * (1 - risk);
+      const implCost   = Number(byId("implCost").value || 0);
+      const maintCost  = Number(byId("maintCost").value || 0);
+      const toolsCost  = Number(byId("toolsCost").value || 0);
+      const errorSav   = Number(byId("errorSavings").value || 0);
 
-      const paybackMonths = netMonthly > 0 ? (inv / netMonthly) : Infinity;
-      const totalNet = (netMonthly * hzn) - inv;
-      const roi = inv > 0 ? (totalNet / inv) : Infinity;
+      const grossMonthly = (hoursSaved * hourCost) + errorSav;
+      const monthlyCosts = maintCost + toolsCost;
+      const netMonthly = grossMonthly - monthlyCosts;
 
-      // UI
-      document.getElementById('payback').textContent = isFinite(paybackMonths) ? (paybackMonths.toFixed(1) + ' meses') : '—';
-      document.getElementById('roiOut').textContent = isFinite(roi) ? fmtPct(roi) : '—';
-      document.getElementById('netOut').textContent = fmtBRL(totalNet);
+      let paybackMonths = Infinity;
+      if(netMonthly > 0) paybackMonths = implCost / netMonthly;
+
+      const benefits12 = grossMonthly * 12;
+      const costs12 = implCost + (monthlyCosts * 12);
+      const net12 = benefits12 - costs12;
+      const roi12 = costs12 > 0 ? (net12 / costs12) : Infinity;
+
+      // Render
+      byId("gross").textContent = brl(grossMonthly);
+      byId("net").textContent   = brl(netMonthly);
+      byId("payback").textContent = (paybackMonths === Infinity) ? "—" : ${paybackMonths.toFixed(1)} meses;
+      byId("roi").textContent = (roi12 === Infinity) ? "—" : pct(roi12);
 
       // Badge
-      const badge = document.getElementById('badge');
-      if(!isFinite(paybackMonths)){
-        badge.textContent = 'Ajuste benefícios/custos';
+      const badge = byId("badge");
+      if(netMonthly <= 0){
+        badge.textContent = "Ajuste custos/benefícios";
+        badge.style.background = "rgba(252,165,165,.18)";
+        badge.style.borderColor = "rgba(252,165,165,.35)";
+        badge.style.color = "#fecaca";
       } else if(paybackMonths <= 3){
-        badge.textContent = 'Payback muito rápido';
+        badge.textContent = "Payback muito rápido";
+        badge.style.background = "rgba(134,239,172,.18)";
+        badge.style.borderColor = "rgba(134,239,172,.35)";
+        badge.style.color = "#bbf7d0";
       } else if(paybackMonths <= 6){
-        badge.textContent = 'Payback saudável';
+        badge.textContent = "Payback saudável";
+        badge.style.background = "rgba(253,230,138,.18)";
+        badge.style.borderColor = "rgba(253,230,138,.35)";
+        badge.style.color = "#fde68a";
       } else {
-        badge.textContent = 'Payback mais longo';
+        badge.textContent = "Payback mais longo";
+        badge.style.background = "rgba(253,230,138,.14)";
+        badge.style.borderColor = "rgba(253,230,138,.25)";
+        badge.style.color = "#fde68a";
       }
 
-      // Progress within horizon
-      const pbInfo = isFinite(paybackMonths) ? Retorno em ~${paybackMonths.toFixed(1)}m : 'Sem retorno (net mensal = 0)';
-      document.getElementById('pbInfo').textContent = pbInfo;
+      // return numbers for sharing
+      return {hoursSaved,hourCost,implCost,maintCost,toolsCost,errorSav,grossMonthly,monthlyCosts,netMonthly,paybackMonths,roi12,net12,costs12,benefits12};
+    };
 
-      const progress = isFinite(paybackMonths) ? clamp((hzn / paybackMonths), 0, 1) : 0;
-      document.getElementById('pbBar').style.width = (progress * 100).toFixed(0) + '%';
+    byId("calcBtn").addEventListener("click", calc);
 
-      const explain = document.getElementById('explain');
-      if(!isFinite(paybackMonths)){
-        explain.textContent = 'Ajuste economia/receita/retrabalho e custos mensais para estimar retorno.';
-      } else {
-        explain.textContent =
-          `Benefício líquido mensal (ajustado por risco): ${fmtBRL(netMonthly)}. ` +
-          (paybackMonths <= hzn ? Payback dentro de ${hzn} meses. : Payback maior que ${hzn} meses.);
-      }
+    // auto calculate once
+    setTimeout(calc, 150);
 
-      return { inv, sav, rev, rework, ops, risk, hzn, grossMonthly, netMonthly, paybackMonths, totalNet, roi };
-    }
-
-    // Buttons
-    document.getElementById('calcBtn').addEventListener('click', calc);
-
-    document.getElementById('waBtn').addEventListener('click', () => {
+    byId("shareBtn").addEventListener("click", () => {
       const r = calc();
-      const obs = (document.getElementById('obs').value || '').trim();
-
       const msg =
-`Olá! Fiz uma simulação de ROI/Payback no site.
+`Olá! Fiz uma simulação rápida de ROI/Payback no site.
 
-${obs ? obs + "\n\n" : ""}Inputs:
-* Investimento inicial: ${fmtBRL(r.inv)}
-* Benefício mensal (econ + receita + retrabalho): ${fmtBRL(r.grossMonthly)}
-* Custo mensal operação: ${fmtBRL(r.ops)}
-* Risco/atrito: ${(r.risk*100).toFixed(0)}%
-* Horizonte: ${r.hzn} meses
+* Horas economizadas/mês: ${r.hoursSaved}h
+* Custo/hora: R$ ${r.hourCost}
+* Retrabalho evitado: R$ ${r.errorSav}/mês
+* Custos mensais (manutenção+ferramentas): R$ ${r.monthlyCosts}
 
 Resultado:
-* Benefício líquido mensal: ${fmtBRL(r.netMonthly)}
+* Ganho bruto mensal: ${brl(r.grossMonthly)}
+* Benefício líquido mensal: ${brl(r.netMonthly)}
 * Payback: ${isFinite(r.paybackMonths) ? r.paybackMonths.toFixed(1) + " meses" : "—"}
-* ROI no horizonte: ${isFinite(r.roi) ? (r.roi*100).toFixed(1) + "%" : "—"}
-* Ganho líquido total: ${fmtBRL(r.totalNet)}
+* ROI 12 meses: ${isFinite(r.roi12) ? (r.roi12*100).toFixed(0) + "%" : "—"}
 
-Quero validar com o meu processo real.`;
-
-      window.open(wa(msg), "_blank", "noopener,noreferrer");
+Quero validar com meu processo real.`;
+      window.open(waBase(msg), "_blank", "noopener,noreferrer");
     });
-
-    // Auto-calc on input
-    ['inv','sav','rev','rework','ops','risk','hzn'].forEach(id => {
-      document.getElementById(id).addEventListener('input', () => {
-        clearTimeout(window.__t);
-        window.__t = setTimeout(calc, 120);
-      });
-    });
-
-    // First render
-    calc();
   </script>
 </body>
 </html>
