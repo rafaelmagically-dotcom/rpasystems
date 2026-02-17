@@ -1,132 +1,46 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>RPA Systems | Automação + IA com ROI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPA Systems | Automação + IA</title>
 
-  <link rel="icon" href="logo.png" type="image/png"/>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    body{
-      margin:0;
-      font-family: Inter, sans-serif;
-      background:#000;
-      color:#fff;
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
     }
-    .wrap{max-width:1100px;margin:auto;padding:20px}
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 0;
+
+    body {
+        background-color: #0b0f14;
+        color: #ffffff;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        background-color: #0b0f14;
     }
-    .brand img{
-      height:42px;
+
+    .logo img {
+        height: 50px;
     }
-    h1{font-size:38px;margin-bottom:15px}
-    .btn{
-      display:inline-block;
-      padding:12px 20px;
-      background:linear-gradient(90deg,#0b6bff,#19e6c6);
-      border-radius:10px;
-      font-weight:700;
-      text-decoration:none;
-      color:#000;
+
+    nav a {
+        color: #ccc;
+        text-decoration: none;
+        margin-left: 30px;
+        font-size: 14px;
     }
-    section{margin-top:60px}
-    input{
-      padding:10px;
-      border-radius:8px;
-      border:none;
-      width:100%;
-      margin-bottom:10px;
+
+    nav a:hover {
+        color: #fff;
     }
-    .card{
-      background:#111;
-      padding:20px;
-      border-radius:15px;
-    }
-  </style>
-</head>
 
-<body>
-
-<div class="wrap">
-
-<header>
-  <div class="brand">
-    <img src="logo.png" alt="RPA Systems">
-    <div>
-      <strong>RPA Systems</strong><br>
-      <small>Automação + IA</small>
-    </div>
-  </div>
-  <a class="btn" href="#roi">Simular ROI</a>
-</header>
-
-<section>
-  <h1>Automação + IA com ROI claro</h1>
-  <p>Reduza custo, acelere decisões e visualize payback antes de investir.</p>
-</section>
-
-<section id="roi">
-  <div class="card">
-    <h2>Simulador de ROI</h2>
-
-    <input id="inv" type="number" value="15000" placeholder="Investimento inicial">
-    <input id="benefit" type="number" value="4300" placeholder="Benefício mensal">
-    <input id="ops" type="number" value="500" placeholder="Custo mensal operação">
-    <input id="hzn" type="number" value="12" placeholder="Horizonte (meses)">
-
-    <button class="btn" onclick="calc()">Calcular</button>
-
-    <div style="margin-top:20px">
-      <p><strong>Payback:</strong> <span id="payback">—</span></p>
-      <p><strong>ROI:</strong> <span id="roiOut">—</span></p>
-      <p><strong>Ganho líquido:</strong> <span id="netOut">—</span></p>
-    </div>
-  </div>
-</section>
-
-</div>
-
-<script>
-function fmtBRL(n){
-  return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-}
-
-function calc(){
-  const inv = Number(document.getElementById('inv').value || 0);
-  const benefit = Number(document.getElementById('benefit').value || 0);
-  const ops = Number(document.getElementById('ops').value || 0);
-  const hzn = Number(document.getElementById('hzn').value || 12);
-
-  const netMonthly = benefit - ops;
-
-  const payback = netMonthly > 0 ? inv / netMonthly : Infinity;
-  const totalNet = (netMonthly * hzn) - inv;
-  const roi = inv > 0 ? totalNet / inv : 0;
-
-  document.getElementById('payback').textContent =
-    isFinite(payback) ? payback.toFixed(1) + " meses" : "Sem retorno";
-
-  document.getElementById('roiOut').textContent =
-    (roi * 100).toFixed(1) + "%";
-
-  document.getElementById('netOut').textContent =
-    fmtBRL(totalNet);
-}
-</script>
-
-</body>
-</html>
+    .btn {
+        background: linear-gradient(90deg, #1d4ed8, #14b8a6);
+        padding: 10px
